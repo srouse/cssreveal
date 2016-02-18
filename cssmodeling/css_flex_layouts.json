@@ -1,0 +1,253 @@
+{
+    "groups":{
+		"layouts":{
+			"title":"Layouts",
+			"description":"Layouts provide the majority use cases for laying out an application. They are not meant to be exhaustive so much as prescriptive about the most explicit and predictable way to create layouts."
+		}
+    },
+
+    "cache":[
+
+    ],
+
+
+    "variables" : [
+        {
+            "name":"flex-justify-content",
+            "group":"layouts",
+            "base":"",
+            "shortcut":"<em>@base</em>-[ flex-start, flex-end, center, space-between, space-around ]",
+            "scheme":["@base-flex-start","@base-flex-end","@base-center","@base-space-between","@base-space-around"],
+            "values":[
+                "flex-start",
+                "flex-end",
+                "center",
+                "space-between",
+                "space-around"
+            ],
+            "ignore_variable":true,
+            "atoms":[
+                {
+                    "name":"flex-justify-content",
+                    "group":"layouts",
+                    "sub_group":"positioning",
+                    "example":"<div ... style='display: flex; width: 100%;'><div style='width: 100px; height: 100px; background-color:#fff;'></div><div style='width: 100px; height: 100px; background-color:#aaa;'></div><div style='width: 100px; height: 100px; background-color:#fff;'></div></div>",
+                    "selector":".a-justify-content@var_name",
+                    "declaration_value":"justify-content : @var_value;"
+                }
+            ]
+        },
+        {
+            "name":"align-self",
+            "group":"layouts",
+            "base":"",
+            "shortcut":"<em>@base</em>-[ flex-start, flex-end, center, space-between, space-around ]",
+            "scheme":["@base-flex-start","@base-flex-end","@base-center","@base-baseline","@base-stretch"],
+            "values":[
+                "flex-start","flex-end","center","baseline","stretch"
+            ],
+            "ignore_variable":true,
+            "atoms":[
+                {
+                    "name":"align-self",
+                    "group":"layouts",
+                    "sub_group":"positioning",
+                    "example":"<div ... style='display: flex; width: 100%;'><div style='width: 100px; height: 100px; background-color:#fff;'></div><div style='width: 100px; height: 100px; background-color:#aaa;'></div><div style='width: 100px; height: 100px; background-color:#fff;'></div></div>",
+                    "selector":".a-align-self@var_name",
+                    "declaration_value":"align-self : @var_value;"
+                }
+            ]
+        },
+        {
+            "name":"flex-align-items",
+            "group":"layouts",
+            "base":"",
+            "shortcut":"<em>@base</em>-[ flex-start, flex-end, center, baseline, stretch ]",
+            "scheme":{"@base":[
+                "-flex-start","-flex-end",
+                "-center","-baseline","-stretch"]
+            },
+            "values":[
+                "flex-start","flex-end","center","baseline","stretch"
+            ],
+            "ignore_variable":true,
+            "atoms":[
+                {
+                    "name":"flex-align-items",
+                    "group":"layouts",
+                    "sub_group":"positioning",
+                    "example":"<div ... style='display: flex; width: 100%; height: 100%;'><div style='width: 100px; min-height: 50px; background-color:#fff;'></div><div style='width: 100px; height: 100px; background-color:#aaa;'></div><div style='width: 100px; height: 100px; background-color:#fff;'></div></div>",
+                    "selector":".a-align-items@var_name",
+                    "declaration_value":"align-items : @var_value;"
+                }
+            ]
+        },
+        {
+            "name":"flex-direction",
+            "group":"layouts",
+            "base":"",
+            "shortcut":"<em>@base</em>-[ row, row-reverse, column, column-reverse ]",
+            "scheme":{"@base":[
+                "-row","-row-reverse","-column","-column-reverse"]
+            },
+            "values":[
+                "row","row-reverse","column","column-reverse"
+            ],
+            "ignore_variable":true,
+            "atoms":[
+                {
+                    "name":"flex-direction",
+                    "group":"layouts",
+                    "sub_group":"positioning",
+                    "example":"<div ... style='display: flex; width: 100%;'><div style='width: 100px; height: 100px; background-color:#fff;'>1</div><div style='width: 100px; height: 100px; background-color:#aaa;'>2</div><div style='width: 100px; height: 100px; background-color:#fff;'>3</div></div>",
+                    "selector":".a-flex-direction@var_name",
+                    "declaration_value":"flex-direction : @var_value;"
+                }
+            ]
+        }
+    ],
+
+    "utilities":[
+
+
+        {
+			"name":"flex-v",
+            "group":"layouts",
+            "sub_group":"positioning",
+			"selector":".a-flex-v",
+            "example":"<div ... style='display: flex; width: 100%; height: 100%;'><div style='width: 100px; min-height: 100px; background-color:#fff;'></div><div style='width: 100px; height: 100px; background-color:#aaa;'></div><div style='width: 100px; height: 100px; background-color:#fff;'></div></div>",
+			"declaration_lines":[
+                "display: flex;",
+                "flex-flow: column nowrap;",
+                "justify-content: flex-start;",
+            	"align-items: center;"
+			]
+		},
+
+        {
+			"name":"flex-v-stretch",
+            "group":"layouts",
+            "sub_group":"positioning",
+			"selector":".a-flex-v-stretch",
+            "example":"<div ... style='display: flex; width: 100%; height: 100%;'><div style='height: 100px; background-color:#fff;'></div><div style='width: 100px; height: 100px; background-color:#aaa;'>100px wide</div><div style='height: 100px; background-color:#fff;'></div></div>",
+			"declaration_lines":[
+                "display: flex;",
+                "flex-flow: column nowrap;",
+                "justify-content: flex-start;",
+            	"align-items: stretch;"
+			]
+		},
+
+        {
+			"name":"flex-v-start",
+            "group":"layouts",
+            "sub_group":"positioning",
+			"selector":".a-flex-v-start",
+            "example":"<div ... style='display: flex; width: 100%; height: 100%;'><div style='width: 100px; min-height: 100px; background-color:#fff;'></div><div style='width: 100px; height: 100px; background-color:#aaa;'></div><div style='width: 100px; height: 100px; background-color:#fff;'></div></div>",
+			"declaration_lines":[
+                "display: flex;",
+                "flex-flow: column nowrap;",
+                "justify-content: flex-start;",
+            	"align-items: flex-start;"
+			]
+		},
+
+        {
+			"name":"flex-v-end",
+            "group":"layouts",
+            "sub_group":"positioning",
+			"selector":".a-flex-v-end",
+            "example":"<div ... style='display: flex; width: 100%; height: 100%;'><div style='width: 100px; min-height: 100px; background-color:#fff;'></div><div style='width: 100px; height: 100px; background-color:#aaa;'></div><div style='width: 100px; height: 100px; background-color:#fff;'></div></div>",
+			"declaration_lines":[
+                "display: flex;",
+                "flex-flow: column nowrap;",
+                "justify-content: flex-start;",
+            	"align-items: flex-end;"
+			]
+		},
+
+        {
+			"name":"flex-h",
+            "group":"layouts",
+            "sub_group":"positioning",
+			"selector":".a-flex-h",
+            "example":"<div ... style='display: flex; width: 100%; height: 100%;'><div style='width: 100px; min-height: 100px; background-color:#fff;'></div><div style='width: 100px; height: 100px; background-color:#aaa;'></div><div style='width: 100px; height: 100px; background-color:#fff;'></div></div>",
+			"declaration_lines":[
+                "display: flex;",
+                "flex-flow: row nowrap;",
+                "justify-content: flex-start;",
+            	"align-items: center;"
+			]
+		},
+
+        {
+			"name":"flex-h-stretch",
+            "group":"layouts",
+            "sub_group":"positioning",
+			"selector":".a-flex-h-stretch",
+            "example":"<div ... style='display: flex; width: 100%; height: 100%;'><div style='width: 100px; min-height: 100px; background-color:#fff;'></div><div style='width: 100px; height: 100px; background-color:#aaa;'>100px height</div><div style='width: 100px; background-color:#fff;'></div></div>",
+			"declaration_lines":[
+                "display: flex;",
+                "flex-flow: row nowrap;",
+                "justify-content: flex-start;",
+            	"align-items: stretch;"
+			]
+		},
+
+        {
+			"name":"flex-h-start",
+            "group":"layouts",
+            "sub_group":"positioning",
+			"selector":".a-flex-h-start",
+            "example":"<div ... style='display: flex; width: 100%; height: 100%;'><div style='width: 100px; min-height: 100px; background-color:#fff;'></div><div style='width: 100px; height: 100px; background-color:#aaa;'></div><div style='width: 100px; height: 100px; background-color:#fff;'></div></div>",
+			"declaration_lines":[
+                "display: flex;",
+                "flex-flow: row nowrap;",
+                "justify-content: flex-start;",
+            	"align-items: flex-start;"
+			]
+		},
+
+        {
+			"name":"flex-h-end",
+            "group":"layouts",
+            "sub_group":"positioning",
+			"selector":".a-flex-h-end",
+            "example":"<div ... style='display: flex; width: 100%; height: 100%;'><div style='width: 100px; min-height: 100px; background-color:#fff;'></div><div style='width: 100px; height: 100px; background-color:#aaa;'></div><div style='width: 100px; height: 100px; background-color:#fff;'></div></div>",
+			"declaration_lines":[
+                "display: flex;",
+                "flex-flow: row nowrap;",
+                "justify-content: flex-start;",
+            	"align-items: flex-end;"
+			]
+		},
+
+        {
+			"name":"flex-center",
+            "group":"layouts",
+            "sub_group":"positioning",
+			"selector":".a-flex-center",
+            "example":"<div ... style='display: flex; width: 100%; height: 100%;'>Text That is Centered</div>",
+			"declaration_lines":[
+                "display: flex;",
+                "flex-flow: row nowrap;",
+            	"justify-content: center;",
+            	"align-items: center;"
+			]
+		},
+
+
+
+
+        {
+			"name":"flex-item-fill",
+            "group":"layouts",
+            "sub_group":"positioning",
+			"selector":".a-flex-item-fill",
+            "example":"<div style='display: flex; width: 100%; height: 100%;'><div style='width: 100px; height: 100px; background-color:#fff;'></div><div ... style='width: 100px; height: 100px; background-color:#aaa;'>FILLING</div><div style='width: 100px; height: 100px; background-color:#fff;'></div></div>",
+			"declaration_lines":[
+                "flex: 1;"
+			]
+		}
+	]
+}

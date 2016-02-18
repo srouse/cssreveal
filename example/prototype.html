@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Prototype</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+        <script>
+
+            function hitService() {
+                parent.postMessage({
+                        action:'cssreveal',
+                        target:'.c-primaryNav',
+                        filters:[
+                            ['.c-primaryNav__item',2]
+                        ]
+                    }, document.location.origin
+                );
+            }
+
+        </script>
+
+	</head>
+	<body>
+        <div class="c-primaryNav">
+            <div></div>
+            <div class="c-primaryNav__item">1a</div>
+            <div class="c-primaryNav__item">2b</div>
+            <div class="c-primaryNav__item">3a</div>
+            <div class="c-primaryNav__item">4b</div>
+            <div class="c-primaryNav__item">5a</div>
+            <div class="c-primaryNav__item">6b</div>
+            <div class="c-primaryNav__item">7a</div>
+            <div class="c-primaryNav__item">8b</div>
+        </div>
+
+        <div onClick="hitService()">Hit me</div>
+    </body>
+</html>

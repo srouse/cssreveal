@@ -1,0 +1,34 @@
+{
+	"name": "cssreveal",
+	"description": "A utility to dynamically view the HTML structure behind OOCSS elements",
+	"author": "srouse",
+	"version": "0.0.1",
+	"dependencies": {
+		"grunt":"~0.4",
+        "grunt-contrib-watch": "~0.6",
+        "grunt-contrib-concat" : "~0.5",
+        "grunt-contrib-less": "~1.0",
+		"grunt-contrib-copy": "~0.8",
+        "grunt-react" : "~0.12",
+        "jquery": "~1.11",
+        "react" : "~0.13",
+        "nanoscroller":"~0.8",
+        "routestate":"^0.4.1",
+		"cssmodeling":"^0.1.53"
+	},
+	"devDependencies": {
+	},
+	"main": "cssreveal.js",
+	"scripts": {
+	    "test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://srouse@github.com/srouse/cssreveal.git"
+	},
+	"license": "ISC",
+	"bugs": {
+		"url": "https://scottrouse.me"
+	},
+	"homepage": "https://scottrouse.me"
+}

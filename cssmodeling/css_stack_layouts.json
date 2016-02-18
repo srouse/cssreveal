@@ -1,0 +1,520 @@
+{
+    "groups":{
+		"layouts":{
+			"title":"Layouts",
+			"description":"Layouts provide the majority use cases for laying out an application. They are not meant to be exhaustive so much as prescriptive about the most explicit and predictable way to create layouts."
+		}
+    },
+
+    "cache":[
+        ".flexbox "
+    ],
+
+    "variables" : [
+
+    ],
+
+    "atoms" : [
+        {
+            "name":"flex-width-col-12-inv",
+            "variable":"12col-col-12",
+            "group":"layouts",
+            "sub_group":"sizing",
+            "example":"<div ... style='height: 100px; min-width: 50px; background-color:#fff; position: absolute;'></div>",
+            "selector":".a-flex-h-fill-minus-@var_name",
+            "declaration_lines":[
+
+                    "flex: 1;",
+                    "-ms-flex: 1 0 auto;",
+
+                ".no-flexbox & {",
+                    "width: calc( 100% - _@_@var_name  );",
+                    "outline: none;",
+                "}"
+			]
+        },
+        {
+            "name":"flex-row-height-quartered-inv",
+            "variable":"row-height-quartered-inv",
+            "group":"layouts",
+            "sub_group":"sizing",
+            "example":"<div ... style='width: 100px; background-color:#fff; position: absolute;'></div>",
+            "selector":".a-flex-v-fill-minus-@var_name",
+            "declaration_lines":[
+
+                    "flex: 1;",
+                    "-ms-flex: 1 0 auto;",
+
+                ".no-flexbox & {",
+                    "height: calc( 100% - _@_@var_name  );",
+                    "outline: none;",
+                "}"
+			]
+        }
+    ],
+
+    "utilities":[
+
+        {
+			"name":"stack-v",
+            "group":"layouts",
+            "sub_group":"positioning",
+			"selector":".a-flex-v",
+            "example":"<div ... style='display: flex; width: 100%; height: 100%;'><div style='width: 100px; min-height: 100px; background-color:#fff;'></div><div style='width: 100px; height: 100px; background-color:#aaa;'></div><div style='width: 100px; height: 100px; background-color:#fff;'></div></div>",
+			"declaration_lines":[
+
+                    "display: flex;",
+                    "flex-flow: column nowrap;",
+                    "justify-content: flex-start;",
+                	"align-items: center;",
+
+                    "display: -ms-flexbox;",
+                    "-ms-flex-direction: column;",
+                    "-ms-flex-pack: start;",
+                	"-ms-flex-align: center;",
+
+                ".no-flexbox & {",
+                    "position: relative;",
+                    "transform-style: preserve-3d;",
+                    "> * {",
+                        "min-width: 1px;",
+                        "position: relative;",
+                        "float: left;",
+                        "clear: left;",
+                        "left: 50%;",
+                        "transform: translateX(-50%);",
+                        "-ms-transform: translateX(-50%);",
+                    "}",
+                "}",
+
+                ".flexbox-grid & {",
+                    "position: relative;",
+                    "> * {",
+                        "float: left;",
+                        "clear: left;",
+                        "min-height: 1px;",
+                        "/* need to define width */",
+                        "outline: 5px dotted red;",
+                    "}",
+                "}",
+
+                ".no-flexbox-table & {",
+                    "display: table;",
+                    "> * {",
+                        "display: table-row;",
+                        "vertical-align: middle;",
+                        "text-align: center;",
+                        "position: relative;",
+                    "}",
+                "}"
+			]
+		},
+
+        {
+			"name":"stack-v-stretch",
+            "group":"layouts",
+            "sub_group":"positioning",
+			"selector":".a-flex-v-stretch",
+            "example":"<div ... style='display: flex; width: 100%; height: 100%;'><div style='height: 100px; background-color:#fff;'></div><div style='width: 100px; height: 100px; background-color:#aaa;'>100px wide</div><div style='height: 100px; background-color:#fff;'></div></div>",
+			"declaration_lines":[
+
+                    "display: flex;",
+                    "flex-flow: column nowrap;",
+                    "justify-content: flex-start;",
+                	"align-items: stretch;",
+
+                    "display: -ms-flexbox;",
+                    "-ms-flex-direction: column;",
+                    "-ms-flex-pack: start;",
+                	"-ms-flex-align: stretch;",
+
+                ".flexbox-grid & {",
+                    "position: relative;",
+                    "> * {",
+                        "float: left;",
+                        "clear: left;",
+                        "min-width: 1px;",
+                        "width: 100%",
+                    "}",
+                "}",
+
+                ".no-flexbox & {",
+                    "position: relative;",
+                    "> * {",
+                        "float: left;",
+                        "min-width: 1px;",
+                        "width: 100%",
+                    "}",
+                "}"
+
+			]
+		},
+
+        {
+			"name":"stack-v-start",
+            "group":"layouts",
+            "sub_group":"positioning",
+			"selector":".a-flex-v-start",
+            "example":"<div ... style='display: flex; width: 100%; height: 100%;'><div style='width: 100px; min-height: 100px; background-color:#fff;'></div><div style='width: 100px; height: 100px; background-color:#aaa;'></div><div style='width: 100px; height: 100px; background-color:#fff;'></div></div>",
+			"declaration_lines":[
+
+                    "display: flex;",
+                    "flex-flow: column nowrap;",
+                    "justify-content: flex-start;",
+                	"align-items: flex-start;",
+
+                    "display: -ms-flexbox;",
+                    "-ms-flex-direction: column;",
+                    "-ms-flex-pack: start;",
+                	"-ms-flex-align: start;",
+
+                ".flexbox-grid & {",
+                    "position: relative;",
+                    "> * {",
+                        "float: left;",
+                        "clear: left;",
+                        "min-width: 1px;",
+                    "}",
+                "}",
+
+                ".no-flexbox & {",
+                    "position: relative;",
+                    "> * {",
+                        "float: left;",
+                        "clear: left;",
+                        "min-width: 1px;",
+                        "min-height: 1px;",
+                    "}",
+                "}"
+			]
+		},
+
+        {
+			"name":"stack-v-end",
+            "group":"layouts",
+            "sub_group":"positioning",
+			"selector":".a-flex-v-end",
+            "example":"<div ... style='display: flex; width: 100%; height: 100%;'><div style='width: 100px; min-height: 100px; background-color:#fff;'></div><div style='width: 100px; height: 100px; background-color:#aaa;'></div><div style='width: 100px; height: 100px; background-color:#fff;'></div></div>",
+			"declaration_lines":[
+
+                    "display: flex;",
+                    "flex-flow: column nowrap;",
+                    "justify-content: flex-start;",
+                	"align-items: flex-end;",
+
+                    "display: -ms-flexbox;",
+                    "-ms-flex-direction: column;",
+                    "-ms-flex-pack: start;",
+                	"-ms-flex-align: end;",
+
+                ".flexbox-grid & {",
+                    "position: relative;",
+                    "> * {",
+                        "float: right;",
+                        "clear: right;",
+                        "min-width: 1px;",
+                    "}",
+                "}",
+
+                ".no-flexbox & {",
+                    "position: relative;",
+                    "> * {",
+                        "float: right;",
+                        "clear: right;",
+                        "min-width: 1px;",
+                    "}",
+                "}"
+			]
+		},
+
+        {
+			"name":"stack-h",
+            "group":"layouts",
+            "sub_group":"positioning",
+			"selector":".a-flex-h",
+            "example":"<div ... style='display: flex; width: 100%; height: 100%;'><div style='width: 100px; min-height: 100px; background-color:#fff;'></div><div style='width: 100px; height: 100px; background-color:#aaa;'></div><div style='width: 100px; height: 100px; background-color:#fff;'></div></div>",
+			"declaration_lines":[
+
+                    "display: flex;",
+                    "flex-flow: row nowrap;",
+                    "justify-content: flex-start;",
+                	"align-items: center;",
+
+                    "display: -ms-flexbox;",
+                    "-ms-flex-direction: row;",
+                    "-ms-flex-pack: start;",
+                	"-ms-flex-align: center;",
+
+                ".flexbox-grid & {",
+                    "position: relative;",
+                    "> * {",
+                        "float: left;",
+                        "min-height: 1px;",
+                        "position: relative;",
+                        "/* need to define height */",
+                        "outline: 5px dotted red;",
+                    "}",
+                "}",
+
+                ".no-flexbox & {",
+                    "position: relative;",
+                    "transform-style: preserve-3d;",
+                    "> * {",
+                        "float: left;",
+                        "min-height: 1px;",
+                        "position: relative;",
+                        "top: 50%;",
+                        "transform: translateY(-50%);",
+                        "-ms-transform: translateY(-50%);",
+                    "}",
+                "}",
+
+                ".no-flexbox-table & {",
+                    "display: table;",
+                    "> * {",
+                        "display: table-cell;",
+                        "vertical-align: middle;",
+                        "/*text-align: center;*/",
+                        "position: relative;",
+                    "}",
+                "}"
+
+			]
+		},
+
+        {
+			"name":"stack-h-stretch",
+            "group":"layouts",
+            "sub_group":"positioning",
+			"selector":".a-flex-h-stretch",
+            "example":"<div ... style='display: flex; width: 100%; height: 100%;'><div><div style='width: 100px; min-height: 100px; background-color:#fff;'></div><div style='width: 100px; height: 100px; background-color:#aaa;'>100px height</div><div style='width: 100px; background-color:#fff;'></div></div></div>",
+			"declaration_lines":[
+
+                    "display: flex;",
+                    "flex-flow: row nowrap;",
+                    "justify-content: flex-start;",
+                	"align-items: stretch;",
+
+                    "display: -ms-flexbox;",
+                    "-ms-flex-direction: row;",
+                    "-ms-flex-pack: start;",
+                	"-ms-flex-align: stretch;",
+
+                ".flexbox-grid & {",
+                    "position: relative;",
+                    "> * {",
+                        "float: left;",
+                        "min-height: 1px;",
+                        "height: 100%;",
+                    "}",
+                "}",
+
+                ".no-flexbox & {",
+                    "position: relative;",
+                    "> * {",
+                        "float: left;",
+                        "height: 100%;",
+                        "min-width: 1px;",
+                    "}",
+                "}",
+
+                ".no-flexbox-table & {",
+                    "display: table;",
+                    "> * {",
+                        "display: table-cell;",
+                        "vertical-align: middle;",
+                        "text-align: center;",
+                        "position: relative;",
+                    "}",
+                "}"
+			]
+		},
+
+        {
+			"name":"stack-h-start",
+            "group":"layouts",
+            "sub_group":"positioning",
+			"selector":".a-flex-h-start",
+            "example":"<div ... style='display: flex; width: 100%; height: 100%;'><div style='width: 100px; min-height: 100px; background-color:#fff;'></div><div style='width: 100px; height: 100px; background-color:#aaa;'></div><div style='width: 100px; height: 100px; background-color:#fff;'></div></div>",
+			"declaration_lines":[
+
+                    "display: flex;",
+                    "flex-flow: row nowrap;",
+                    "justify-content: flex-start;",
+                	"align-items: flex-start;",
+
+                    "display: -ms-flexbox;",
+                    "-ms-flex-direction: row;",
+                    "-ms-flex-pack: start;",
+                	"-ms-flex-align: start;",
+
+                ".flexbox-grid & {",
+                    "position: relative;",
+                    "> * {",
+                        "float: left;",
+                        "min-height: 1px;",
+                    "}",
+                "}",
+
+                ".no-flexbox & {",
+                    "position: relative;",
+                    "> * {",
+                        "float: left;",
+                        "min-width: 1px;",
+                    "}",
+                "}"
+			]
+		},
+
+        {
+			"name":"stack-h-end",
+            "group":"layouts",
+            "sub_group":"positioning",
+			"selector":".a-flex-h-end",
+            "example":"<div ... style='display: flex; width: 100%; height: 100%;'><div style='width: 100px; min-height: 100px; background-color:#fff;'></div><div style='width: 100px; height: 100px; background-color:#aaa;'></div><div style='width: 100px; height: 100px; background-color:#fff;'></div></div>",
+			"declaration_lines":[
+
+                    "display: flex;",
+                    "flex-flow: row nowrap;",
+                    "justify-content: flex-start;",
+                	"align-items: flex-end;",
+
+                    "display: -ms-flexbox;",
+                    "-ms-flex-direction: row;",
+                    "-ms-flex-pack: start;",
+                	"-ms-flex-align: end;",
+
+
+                ".flexbox-grid & {",
+                    "position: relative;",
+                    "> * {",
+                        "float: left;",
+                        "min-height: 1px;",
+                    "}",
+                "}",
+
+                ".no-flexbox & {",
+                    "position: relative;",
+                    "> * {",
+                        "float: left;",
+                        "min-width: 1px;",
+                        "position: relative;",
+                        "top: 100%;",
+                        "transform: translateY(-100%);",
+                        "-ms-transform: translateY(-100%);",
+                    "}",
+                "}"
+
+			]
+		},
+
+        {
+			"name":"stack-center",
+            "group":"layouts",
+            "sub_group":"positioning",
+			"selector":".a-flex-center",
+            "example":"<div ... style='display: flex; width: 100%; height: 100%;'>Text That is Centered</div>",
+			"declaration_lines":[
+
+                    "display: flex;",
+                    "flex-flow: row nowrap;",
+                    "justify-content: center;",
+                	"align-items: center;",
+
+                    "display: -ms-flexbox;",
+                    "-ms-flex-direction: row;",
+                    "-ms-flex-pack: center;",
+                	"-ms-flex-align: center;",
+
+                ".flexbox-grid & {",
+                    "position: relative;",
+                    "text-align: center;",
+                    "> * {",
+                        "display: inline-block;",
+                        "/* need to define height */",
+                        "outline: 5px dotted red;",
+                    "}",
+                    "> *:nth-child( n+2 ) {",
+                        "/* don't put more than one item here */",
+                        "outline: 5px dotted red;",
+                    "}",
+                "}",
+
+                ".no-flexbox & {",
+                    "position: relative;",
+                    "text-align: center;",
+                    "> * {",
+                        "min-width: 1px;",
+                        "position: relative;",
+                        "display: inline-block;",
+                        "top: 50%;",
+                        "transform: translateY( -50% );",
+                        "-ms-transform: translateY( -50% );",
+                    "}",
+                "}"
+
+			]
+		},
+
+
+        {
+			"name":"stack-right",
+            "group":"layouts",
+            "sub_group":"positioning",
+			"selector":".a-flex-right",
+            "example":"<div ... style='display: flex; width: 100%; height: 100%;'>Text That is Right aligned</div>",
+			"declaration_lines":[
+
+
+                    "display: flex;",
+                    "flex-flow: row nowrap;",
+                    "justify-content: flex-end;",
+                    "align-items: center;",
+
+                    "display: -ms-flexbox;",
+                    "-ms-flex-direction: row;",
+                    "-ms-flex-pack: end;",
+                	"-ms-flex-align: center;",
+
+                    "> *:nth-child( n+2 ) {",
+                        "/* only one child */",
+                        "outline: 5px dotted red;",
+                    "}",
+
+                ".no-flexbox & {",
+                    "position: relative;",
+                    "text-align: right;",
+                    "> * {",
+                        "min-width: 1px;",
+                        "position: absolute;",
+                        "right: 0px;","top: 50%;",
+                        "transform: translateY(-50%);",
+                    "}",
+                "}"
+
+			]
+		},
+
+
+        {
+			"name":"stack-item-fill",
+            "group":"layouts",
+            "sub_group":"positioning",
+			"selector":".a-flex-item-fill",
+            "example":"<div style='display: flex; width: 100%; height: 100%;'><div style='width: 100px; height: 100px; background-color:#fff;'></div><div ... style='width: 100px; height: 100px; background-color:#aaa;'>FILLING</div><div style='width: 100px; height: 100px; background-color:#fff;'></div></div>",
+			"declaration_lines":[
+
+
+                    "flex: 1;",
+                    "/*outline: 5px dotted red;*/",
+
+
+                ".no-flexbox & {",
+                    "/* gotta use an inverse calc() size for this to work... */",
+                    "/*outline: 5px dotted red;*/",
+                "}"
+
+			]
+		}
+	]
+}

@@ -1,0 +1,576 @@
+{
+    "groups":{
+
+		"skin":{
+			"title":"Skin",
+			"description":"Properties that address the look of the app."
+		}
+
+	},
+
+    "_comment":[
+        {
+			"name":"size-variables",
+            "group":"skin",
+			"base":"",
+			"shortcut":"<i><em>[component]</em></i>-[ secondaryNav, mainNav,... (_width, _height,...) ]",
+			"scheme":{"@base":[
+				"secondaryNav-width",
+                "secondaryNav--tertiary-width",
+                "content-width",
+                "content--tertiary-width",
+				"mainNav-height",
+                "breakpoint-sm-mainNav-height",
+                "footer-height"
+			]},
+			"values":[
+				"_@_v-col-2",
+                "_@_v-col-3-quarter",
+                "100vw - _@_v-secondaryNav-width",
+                "100vw - _@_v-secondaryNav--tertiary-width",
+				"_@_v-row-3",
+                "_@_v-row-2",
+                "_@_v-row-1-half"
+			]
+		}
+    ],
+
+    "schemes":{
+        "breakpoint-values":{
+            "shortcut":"<em>@base</em>-[ small[ min, max] , medium[ min, max] , large[ min, max] ]",
+            "scheme":{"@base":
+                        [
+                            {"-small":["-min","-max"]},
+                            {"-medium":["-min","-max"]},
+                            {"-large":["-min","-max"]}
+                        ]
+                    }
+        },
+        "misused":{
+            "shortcut":"<em>@base</em>-[ on, off  ]",
+			"scheme":{"@base":[
+				"",
+				"-off"
+			]}
+        },
+        "skin-color-values":{
+			"shortcut":"<em>@base</em>-[ light, dark (er,est) ]",
+			"scheme":{"@base":
+						[
+							"",
+							{"-light":["","er","est"]},
+							{"-dark":["","er","est"]}
+						]
+					}
+		},
+
+        "transition-core-values":{
+			"shortcut":"<em>@base</em>-[ all, none, width, height, left, right, top, bottom ]",
+			"scheme":["@base-all","@base-none","@base-width","@base-height","@base-left","@base-right","@base-top","@base-bottom"]
+		},
+        "skin-power-values":{
+			"shortcut":"<em>@base</em>-[ stong, weak (er,est) ]",
+			"scheme":{"@base":
+						[
+							"","-none",
+							{"-strong":["","er","est"]},
+							{"-weak":["","er","est"]}
+						]
+					}
+		},
+        "skin-location-power-values":{
+			"shortcut":"<em>@base</em>-[ top, bottom, left, right ( none, stong, weak (er,est) ) ]",
+			"scheme":{"@base":
+						[
+							{"":"scheme:skin-power-values"},
+							{"-top":"scheme:skin-power-values"},
+							{"-bottom":"scheme:skin-power-values"},
+							{"-left":"scheme:skin-power-values"},
+							{"-right":"scheme:skin-power-values"},
+                            {"-v":"scheme:skin-power-values"},
+                            {"-h":"scheme:skin-power-values"}
+						]
+					}
+        },
+        "skin-color-uses":{
+			"shortcut":"<em>@base</em>-[ background, text-color, hover... ( light, dark (er,est) ) ]",
+			"scheme":{"":
+						[
+							{"background-@base":"scheme:skin-color-values"},
+							{"text-color-@base":"scheme:skin-color-values"},
+							{"hover-background-@base":"scheme:skin-color-values"},
+							{"hover-text-color-@base":"scheme:skin-color-values"}
+						]
+					}
+        },
+        "skin-10-scale":{
+			"shortcut":"<em>@base</em>-[ 0,1,2,...,10 ]",
+			"scheme":{"@base":
+						["-0","-1","-2","-3","-4","-5","-6"
+							,"-7","-8","-9","-10"]
+					}
+		},
+        "skin-grey-10-scale":{
+			"shortcut":"<em>@base</em> ( 0,1,...,10 ), <em>-black, -white, -none</em>",
+			"scheme":[{"@base":
+						["","-0","-1","-2","-3","-4","-5","-6"
+							,"-7","-8","-9","-10"]
+					},"black","white","none"]
+		}
+    },
+
+    "variables":[
+
+		{
+			"name":"breakpoint-values",
+            "group":"skin",
+			"base":"breakpoint",
+			"scheme":"breakpoint-values",
+			"values":[
+				"768px","991px",
+                "992px","1199px",
+                "1200px","4000px"
+			]
+		},
+		{
+			"name":"misused",
+            "group":"skin",
+			"base":"misused",
+			"scheme":"misused",
+			"values":[
+				"5px dotted red",
+				"none"
+			],
+			"atoms":[
+				{
+					"name":"misused",
+                    "group":"skin",
+					"sub_group":"misc",
+					"example":"...misused",
+					"selector":".a-@var_name",
+					"declaration_value":"outline: _@_@var_name ;"
+				}
+			]
+		},
+        {
+			"name":"greys",
+            "group":"skin",
+			"base":"grey",
+			"scheme":"skin-grey-10-scale",
+			"values":[
+                "#808080",
+				"#000","#1A1A1A","#333",
+				"#4D4D4D","#666666","#808080",
+				"#999999","#B3B3B3","#CCCCCC",
+				"#eee","#fff","#000","#fff","rgba(0,0,0,0)"
+			],
+			"atoms":[
+				{
+                    "group":"skin",
+					"sub_group":"colors",
+					"example":"<div ... style='height: 100px; width: 100px;'></div>",
+					"selector":".a-background-@var_name",
+					"declaration_value":"background-color : _@_@var_name ;"
+				},
+				{
+                    "group":"skin",
+					"sub_group":"colors",
+					"example":"...Text Color",
+					"selector":".a-text-color-@var_name",
+					"declaration_value":"color :  _@_@var_name ;"
+				},
+				{
+                    "group":"skin",
+					"sub_group":"colors",
+					"example":"<div ... style='height: 100px; width: 100px;'></div>",
+					"selector":".a-hover-background-@var_name",
+					"declaration_value":"&:hover { background-color : _@_@var_name ; }"
+				},
+				{
+                    "group":"skin",
+					"sub_group":"colors",
+					"example":"<div ... style='height: 100px; width: 100px;'></div>",
+					"selector":".a-hover-text-color-@var_name",
+					"declaration_value":"&:hover { color : _@_@var_name ; }"
+				}
+			]
+		},
+
+
+        {
+			"name":"text-weight-values",
+            "group":"skin",
+			"base":"text-weight",
+            "shortcut":"<em>@base</em>-[ light, normal, bold ]",
+    		"scheme":["@base-light","@base-normal","@base-bold"],
+			"values":[
+				"300","500","700"
+			],
+			"atoms":[
+				{
+					"name":"text-weight-values",
+                    "group":"skin",
+                    "sub_group":"typography",
+					"example":"...Text Weight",
+					"selector":".a-@var_name",
+					"declaration_value":"font-weight : _@_@var_name ;"
+				}
+			]
+		},
+
+        {
+			"name":"grey",
+            "group":"skin",
+			"base":"grey",
+			"scheme":"skin-color-values",
+			"values":[
+                "_@_v-grey-5",
+				"_@_v-grey-6","_@_v-grey-7","_@_v-grey-8",
+				"_@_v-grey-4","_@_v-grey-3","_@_v-grey-0"
+			],
+			"atoms":[
+				{
+                    "name":"grey-background",
+                    "group":"skin",
+					"sub_group":"colors",
+					"example":"<div ... style='width: 50px; height: 50px;'>Text</div>",
+					"selector":".a-background-@var_name",
+                    "declaration_value":"background-color: _@_@var_name ;"
+				},
+                {
+                    "name":"grey-text-color",
+                    "group":"skin",
+					"sub_group":"colors",
+					"example":"<div ... style='width: 50px; height: 50px;'>Text</div>",
+					"selector":".a-text-color-@var_name",
+                    "declaration_value":"color: _@_@var_name ;"
+				},
+                {
+                    "name":"grey-hover-background",
+                    "group":"skin",
+					"sub_group":"colors",
+					"example":"<div ... style='width: 50px; height: 50px;'>Text</div>",
+					"selector":".a-hover-background-@var_name",
+                    "declaration_value":"&:hover { background-color : _@_@var_name ; }"
+				},
+                {
+                    "name":"grey-hover-text-color",
+                    "group":"skin",
+					"sub_group":"colors",
+					"example":"<div ... style='width: 50px; height: 50px;'>Text</div>",
+					"selector":".a-hover-text-color-@var_name",
+                    "declaration_value":"&:hover { color : _@_@var_name ; }"
+				}
+			]
+		},
+
+        {
+			"name":"green",
+            "group":"skin",
+			"base":"green",
+			"scheme":"skin-color-values",
+			"values":[
+                "#00b588",
+				"#00DFA7","#B7FFE0","#f9fffd",
+				"#008262","#008262","#008262"
+			],
+            "atoms":[
+				{
+                    "name":"green-background",
+                    "group":"skin",
+					"sub_group":"colors",
+					"example":"<div ... style='width: 50px; height: 50px;'>Text</div>",
+					"selector":".a-background-@var_name",
+                    "declaration_value":"background-color: _@_@var_name ;"
+				},
+                {
+                    "name":"green-text-color",
+                    "group":"skin",
+					"sub_group":"colors",
+					"example":"<div ... style='width: 50px; height: 50px;'>Text</div>",
+					"selector":".a-text-color-@var_name",
+                    "declaration_value":"color: _@_@var_name ;"
+				},
+                {
+                    "name":"green-hover-background",
+                    "group":"skin",
+					"sub_group":"colors",
+					"example":"<div ... style='width: 50px; height: 50px;'>Text</div>",
+					"selector":".a-hover-background-@var_name",
+                    "declaration_value":"&:hover { background-color : _@_@var_name ; }"
+				},
+                {
+                    "name":"green-hover-text-color",
+                    "group":"skin",
+					"sub_group":"colors",
+					"example":"<div ... style='width: 50px; height: 50px;'>Text</div>",
+					"selector":".a-hover-text-color-@var_name",
+                    "declaration_value":"&:hover { color : _@_@var_name ; }"
+				}
+			]
+		},
+
+        {
+			"name":"red",
+            "group":"skin",
+			"base":"red",
+			"scheme":"skin-color-values",
+			"values":[
+				"#DF0034",
+				"#DE2F57","#DE5978","#DEADB8",
+				"#B8002B","#80001E","#4D0012"
+			],
+            "atoms":[
+				{
+                    "name":"red-background",
+                    "group":"skin",
+					"sub_group":"colors",
+					"example":"<div ... style='width: 50px; height: 50px;'>Text</div>",
+					"selector":".a-background-@var_name",
+                    "declaration_value":"background-color: _@_@var_name ;"
+				},
+                {
+                    "name":"red-text-color",
+                    "group":"skin",
+					"sub_group":"colors",
+					"example":"<div ... style='width: 50px; height: 50px;'>Text</div>",
+					"selector":".a-text-color-@var_name",
+                    "declaration_value":"color: _@_@var_name ;"
+				},
+                {
+                    "name":"red-hover-background",
+                    "group":"skin",
+					"sub_group":"colors",
+					"example":"<div ... style='width: 50px; height: 50px;'>Text</div>",
+					"selector":".a-hover-background-@var_name",
+                    "declaration_value":"&:hover { background-color : _@_@var_name ; }"
+				},
+                {
+                    "name":"red-hover-text-color",
+                    "group":"skin",
+					"sub_group":"colors",
+					"example":"<div ... style='width: 50px; height: 50px;'>Text</div>",
+					"selector":".a-hover-text-color-@var_name",
+                    "declaration_value":"&:hover { color : _@_@var_name ; }"
+				}
+			]
+		},
+
+
+
+		{
+			"name":"secondaryNavBGColor",
+            "group":"skin",
+			"base":"secondaryNavBGColor",
+			"scheme":"simple",
+			"values":[
+				"#eee"
+			],
+			"atoms":[
+				{
+					"name":"secondaryNavBGColor",
+                    "group":"skin",
+					"sub_group":"colors",
+					"example":"<div ... style='height: 100px; width: 100px; border: 1px solid black;'></div>",
+					"selector":".a-background-@var_name",
+					"declaration_value":"background-color : _@_@var_name ;"
+				}
+			]
+		},
+		{
+			"name":"alpha",
+            "group":"skin",
+			"base":"alpha",
+			"scheme":"skin-10-scale",
+			"values":[
+				"0",".1",".2",
+				".3",".4",".5",
+				".6",".7",".8",
+				".9","1"
+			],
+			"atoms":[
+				{
+					"name":"opacity",
+                    "group":"skin",
+					"sub_group":"colors",
+					"example":"<div ... style='height: 100px; width: 100px; background-color: #fff'></div>",
+					"selector":".a-@var_name",
+					"declaration_value":"opacity : _@_@var_name ;"
+				}
+			]
+		},
+		{
+			"name":"alpha-greys",
+            "group":"skin",
+			"base":"alpha-grey",
+			"scheme":"skin-10-scale",
+			"values":[
+				"rgba( 0,0,0,0 )","rgba( 0,0,0,.1 )","rgba( 0,0,0,.2 )",
+				"rgba( 0,0,0,.3 )","rgba( 0,0,0,.4 )","rgba( 0,0,0,.5 )",
+				"rgba( 0,0,0,.6 )","rgba( 0,0,0,.7 )","rgba( 0,0,0,.8 )",
+				"rgba( 0,0,0,.9 )","rgba( 0,0,0,1 )"
+			],
+			"atoms":[
+				{
+					"name":"alpha-grey-background",
+                    "group":"skin",
+					"sub_group":"colors",
+					"example":"<div ... style='height: 100px; width: 100px; background-color: #fff'></div>",
+					"selector":".a-background-@var_name",
+					"declaration_value":"background-color : _@_@var_name ;"
+				},
+				{
+					"name":"hover-alpha-grey-background",
+                    "group":"skin",
+					"sub_group":"colors",
+					"example":"<div ... style='height: 100px; width: 100px;'></div>",
+					"selector":".a-hover-background-@var_name",
+					"declaration_value":"&:hover { background-color : _@_@var_name ; }"
+				}
+			]
+		},
+		{
+			"name":"transitions",
+            "group":"skin",
+			"base":"transition",
+			"scheme":"transition-core-values",
+			"values":[
+				"all .3s","none","width .3s","height .3s","left .3s","right .3s","top .3s","bottom .3s"
+			],
+			"atoms":[
+				{
+					"name":"transitions",
+                    "group":"skin",
+					"sub_group":"animations",
+					"example":"<div ... style='width: 100px; height: 100%; background-color:#fff'></div>",
+					"selector":".a-@var_name",
+					"declaration_value":"transition: _@_@var_name ;"
+				}
+			]
+		},
+        {
+			"name":"border-power-values",
+            "group":"skin",
+			"base":"border",
+			"scheme":"skin-location-power-values",
+			"values":[
+				"1px solid _@_v-grey-8","none",
+				"2px solid _@_v-grey-8","4px solid _@_v-grey-8","8px solid _@_v-grey-8",
+				"1px solid _@_v-grey-9","1px solid _@_v-grey-9","1px solid _@_v-grey-9"
+			],
+			"atoms":[
+				{
+					"name":"borders",
+                    "group":"skin",
+					"sub_group":"skins",
+					"example":"<div ... style='width: 50px; height: 50px; position: absolute; top: 50px; left: 50px; background-color:#fff;'></div>",
+					"selector":".a-@var_name",
+                    "declaration_iteration_values":[
+						"border: _@_@var_name ;",
+						"border-top: _@_@var_name ;",
+						"border-bottom: _@_@var_name ;",
+						"border-left: _@_@var_name ;",
+						"border-right: _@_@var_name ;",
+                        "border-top: _@_@var_name ; border-bottom: _@_@var_name ;",
+                        "border-left: _@_@var_name ; border-right: _@_@var_name ;"
+					]
+				}
+			]
+		},
+		{
+			"name":"drop-shadows",
+            "group":"skin",
+			"shortcut":"<em>@base</em>-[ top, bottom, left, right, top-[left, right], bottom-[left, right]]",
+			"scheme":{
+				"@base":[
+                    "",
+					{"-top":["-right","-left","-bottom",""]},
+					{"-bottom":["","-right","-left"]},
+					{"-left":["","-right"]},
+                    {"-right":["","-left"]}
+				]
+			},
+			"base":"shadow",
+			"values":[
+                "0 0 4px 0 rgba( 0,0,0,.1)",
+				"3px -3px 3px 0 rgba( 0,0,0,.1)",
+				"-3px -3px 3px 0 rgba( 0,0,0,.1)",
+                "0 -3px 3px 0 rgba( 0,0,0,.1), 0 3px 3px 0 rgba( 0,0,0,.1)",
+				"0 -3px 3px 0 rgba( 0,0,0,.1)",
+				"0 3px 3px 0 rgba( 0,0,0,.1)",
+				"3px 3px 3px 0 rgba( 0,0,0,.1)",
+				"-3px 3px 3px 0 rgba( 0,0,0,.1)",
+				"-3px 0 3px 0 rgba( 0,0,0,.1)",
+                "-3px 0 3px 0 rgba( 0,0,0,.1), 3px 0 3px 0 rgba( 0,0,0,.1)",
+                "3px 0 3px 0 rgba( 0,0,0,.1)",
+				"3px 0 3px 0 rgba( 0,0,0,.1), -3px 0 3px 0 rgba( 0,0,0,.1)"
+			],
+			"atoms":[
+				{
+					"name":"drop-shadows",
+                    "group":"skin",
+					"sub_group":"skins",
+					"example":"<div ... style='width: 50px; height: 50px; position: absolute; top: 50px; left: 50px; background-color:#fff;'></div>",
+					"selector":".a-@var_name",
+					"declaration_value":"box-shadow : _@_@var_name ;"
+				}
+			]
+		},
+		{
+			"name":"z-indexes",
+            "group":"skin",
+			"base":"zindex",
+			"shortcut":"<em>@base</em>-[ mainNav, secondaryNav, ... ]",
+			"scheme":{"@base":[
+				"-mainNav",
+				"-secondaryNav",
+                "-tertiaryNav",
+				"-content",
+                "-footer",
+                "-modal"
+			]},
+			"values":[
+				"3000",
+				"2000",
+                "2500",
+				"1000",
+                "3500",
+                "5000"
+			],
+			"atoms":[
+				{
+					"name":"z-index",
+                    "group":"skin",
+					"sub_group":"positioning",
+					"example":"...z-layer",
+					"selector":".a-@var_name",
+					"declaration_value":"z-index : _@_@var_name ;"
+				}
+			]
+		},
+
+
+		{
+			"name":"border-radius",
+            "group":"skin",
+			"base":"border-radius",
+			"shortcut":"<em>@base</em>",
+			"scheme":"@base",
+			"values":[
+				"3px"
+			],
+			"atoms":[
+				{
+					"name":"border-radius",
+                    "group":"skin",
+					"sub_group":"skin",
+					"example":"<div ... style='width: 100%; height: 100%; border: 1px solid red;'></div>",
+					"selector":".a-@var_name",
+					"declaration_value":"border-radius : _@_@var_name ;"
+				}
+			]
+		}
+
+
+	]
+}
