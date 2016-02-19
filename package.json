@@ -2,8 +2,9 @@
 	"name": "cssreveal",
 	"description": "A utility to dynamically view the HTML structure behind OOCSS elements",
 	"author": "srouse",
-	"version": "0.0.1",
-	"dependencies": {
+	"version": "0.0.2",
+	"dependencies": {},
+	"devDependencies": {
 		"grunt":"~0.4",
         "grunt-contrib-watch": "~0.6",
         "grunt-contrib-concat" : "~0.5",
@@ -14,9 +15,8 @@
         "react" : "~0.13",
         "nanoscroller":"~0.8",
         "routestate":"^0.4.1",
-		"cssmodeling":"^0.1.53"
-	},
-	"devDependencies": {
+		"cssmodeling":"^0.1.53",
+		"js-beautify":"^1.6.2"
 	},
 	"main": "cssreveal.js",
 	"scripts": {

@@ -5,43 +5,88 @@
 
 var Bootstrap = React.createClass({displayName: "Bootstrap",
 
+
+    openApp: function(){
+        var csscomp = false;
+        if ( CSSRevealModel.csscomps && CSSRevealModel.csscomps.length > 0 ) {
+            csscomp = CSSRevealModel.csscomps[0].target;
+        }
+
+        RS.merge({
+            'app':'show',
+            'app.csscomp':csscomp
+        });
+    },
+
+    render: function() {
+        return React.createElement("div", {className: "c-bootstrap"}, 
+            React.createElement("div", {className: "c-bootstrap__back", onClick:  this.openApp}), 
+            React.createElement("iframe", {id: "cssreveal_target", src:  this.props.url + '?' + Math.random()}), 
+            React.createElement("div", {className: "c-bootstrap__back", onClick:  this.openApp}), 
+            React.createElement(CSSRevealApp, null)
+        );
+    }
+
+});
+
+
+
+var CSSRevealApp = React.createClass({displayName: "CSSRevealApp",
+
     componentWillMount: function() {
         var me = this;
+
+        RouteState.listenToHash();
+		window.RS = RouteState;
+
+
         RouteState.addDiffListeners(
-    		["page"],
+    		["app","csscomp"],
     		function ( route , prev_route ) {
                 me.forceUpdate();
     		},
-            "CSSReveal"
+            "CSSRevealApp"
     	);
     },
 
     componentDidMount: function () {
         var me = this;
+
         window.addEventListener( "message" , function(event) {
             if ( event.data.action == "cssreveal" ) {
                 //me.add( event.data.target , event.data.filters );
                 if ( !CSSRevealModel.csscomps_lookup[ event.data.target ] ) {
+                    event.data.cleanHTML = me.cleanHTML( event.data );
                     CSSRevealModel.csscomps_lookup[ event.data.target ] = event.data;
                     CSSRevealModel.csscomps.push( event.data );
                 }
-                console.log( CSSRevealModel );
+                me.forceUpdate();
             }
         }, false);
-
-        RouteState.listenToHash();
-		RS = RouteState;
     },
 
     componentWillUnmount: function(){
-        RouteState.removeDiffListenersViaClusterId( "CSSReveal" );
+        RouteState.removeDiffListenersViaClusterId( "CSSRevealApp" );
     },
 
-    /*
-    add: function ( target , filters ) {
+    componentDidUpdate: function () {
+        document.querySelector(".prettyprint").classList.remove("prettyprinted");
+        if ( PR ) { PR.prettyPrint(); }
+    },
+
+    openCSSComp: function( csscomp ){
+        RS.merge({'app.csscomp': encodeURIComponent( csscomp.target ) });
+    },
+
+    cleanHTML: function ( comp ) {
 
         var iframe = document.querySelector("#cssreveal_target");
-        var div = iframe.contentWindow.document.querySelector( target );
+
+        if ( !iframe || !comp ) {
+            return "";
+        }
+
+        var div = iframe.contentWindow.document.querySelector( comp.target );
         var clone = div.cloneNode( true );
 
         var allNodes = clone.querySelectorAll("*");
@@ -51,9 +96,8 @@ var Bootstrap = React.createClass({displayName: "Bootstrap",
         });
 
         var filterNodes,filter;
-        for ( var i=0; i<filters.length; i++ ) {
-            filter = filters[i];
-            //clone.querySelector( filters[i] ).remove();
+        for ( var i=0; i<comp.filters.length; i++ ) {
+            filter = comp.filters[i]; 
             filterNodes = clone.querySelectorAll( filter[0] );
             Array.prototype.forEach.call( filterNodes , function(el, i) {
                 if ( i >= filter[1] )
@@ -61,61 +105,60 @@ var Bootstrap = React.createClass({displayName: "Bootstrap",
             });
         }
 
-        var today = new Date();
-        var time_taken = today.toLocaleFormat('%d-%b-%Y'); // 30-Dec-2011
-
-        // add note after CSSModeling is updated to deal with semicolons.
-        var note = "";//"<div style='font-size: 11px; color: #aaa; position: fixed; bottom: 10px; right: 10px;'>snapshot taken: " + time_taken + "</div>";
-        alert( clone.outerHTML );
-
-    }
-
-    */
-
-    render: function() {
-        return React.createElement("div", {className: "c-bootstrap", onClick:  function () { RS.merge({'app':'show'}) }}, 
-            React.createElement("iframe", {id: "cssreveal_target", src:  this.props.url + '?' + Math.random(), height: "96%"}), 
-            React.createElement(CSSRevealApp, null)
-        );
-    }
-
-});
-
-
-
-
-
-
-
-
-var CSSRevealApp = React.createClass({displayName: "CSSRevealApp",
-
-    componentWillMount: function() {
-        var me = this;
-        RouteState.addDiffListeners(
-    		["app"],
-    		function ( route , prev_route ) {
-                me.forceUpdate();
-    		},
-            "CSSRevealApp"
-    	);
-    },
-
-    componentWillUnmount: function(){
-        RouteState.removeDiffListenersViaClusterId( "CSSRevealApp" );
+        return html_beautify( clone.outerHTML  , {
+                    'indent_inner_html': false,
+                    'indent_size': 2,
+                    'indent_char': ' ',
+                    'wrap_line_length': 50,
+                    'brace_style': 'expand',
+                    'preserve_newlines': false,
+                    'indent_handlebars': false,
+                    'extra_liners': ['/html']
+                });
     },
 
     render: function() {
 
-        var comp_list = [],csscomp;
-        for ( var i=0; i<CSSRevealModel.csscomps.length; i++ ) {
+        var focused_csscomp = false;
+        if ( RS.route.csscomp ) {
+            focused_csscomp = CSSRevealModel.csscomps_lookup[ decodeURIComponent( RS.route.csscomp ) ];
+        }
+
+        var comp_list = [],csscomp,xcls;
+        for ( var i=CSSRevealModel.csscomps.length-1; i>=0; i-- ) {
             csscomp = CSSRevealModel.csscomps[i];
-            comp_list.push( React.createElement("div", null,  csscomp.target) );
+            xcls = ( focused_csscomp === csscomp ) ? "c-cssreveallist__item--selected" : "";
+
+            comp_list.push(
+                React.createElement("div", {className:  "c-cssreveallist__item " + xcls, 
+                    key:  csscomp.target, 
+                    onClick:  this.openCSSComp.bind( this , csscomp) }, 
+                     csscomp.target
+                )
+            );
         }
 
         return React.createElement("div", {className: "c-cssrevealapp"}, 
-             comp_list 
+            React.createElement("div", {className: "c-cssrevealapp__back", 
+                onClick:  function () { RS.merge({'app':false}) }}), 
+            React.createElement("div", {className: "c-cssrevealapp__content"}, 
+                React.createElement("div", {className: "c-cssrevealapp__nav c-cssreveallist"}, 
+                     comp_list 
+                ), 
+                React.createElement("div", {className: "c-cssrevealapp__viewer c-cssrevealhtml"}, 
+                    React.createElement("pre", {className: "prettyprint lang-html"}, 
+                         focused_csscomp.cleanHTML
+                    )
+                )
+            ), 
+            React.createElement("div", {className: "c-cssrevealapp__back", 
+                onClick:  function () { RS.merge({'app':false}) }}, 
 
+                React.createElement("div", {className: "c-cssrevealapp__close", 
+                    onClick:  function () { RS.merge({'app':'','d':3}) }}, 
+                    "close"
+                )
+            )
         );
     }
 

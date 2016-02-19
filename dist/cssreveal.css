@@ -7,18 +7,14 @@ html {
   height: 100%;
   width: 100% !important;
   height: 100% !important;
+  font-family: sans-serif;
+  color: #b3b3b3;
+  color: #b3b3b3 !important;
 }
-iframe#cssreveal_target {
-  position: absolute ;
-  position: absolute  !important;
-  top: 2%;
-  left: 50%;
-  margin-left: -605px;
-  width: 1212px;
-  border: none;
-  flex: 1;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
-  z-index: 50;
+* {
+  box-sizing: border-box;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .c-bootstrap {
   width: 100%;
@@ -27,23 +23,225 @@ iframe#cssreveal_target {
   height: 100% !important;
   background-color: #808080;
   background-color: #808080 !important;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex !important;
+  flex-flow: row nowrap !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+}
+.c-bootstrap__back {
+  height: 100%;
+  height: 100% !important;
+  width: calc(100% - 1212px);
+  cursor: hand ;
+  cursor: hand  !important;
+  cursor: pointer ;
+  cursor: pointer  !important;
+}
+.flexbox-grid .a-flex-center > .c-bootstrap__back,
+.flexbox-grid .a-flex-h > .c-bootstrap__back {
+  outline: none;
+}
+.flexbox-grid .a-flex-h-end > .c-bootstrap__back {
+  outline: none;
+}
+.flexbox-grid .a-flex-center > .c-bootstrap__back,
+.flexbox-grid .a-flex-h > .c-bootstrap__back {
+  outline: none !important;
+}
+.flexbox-grid .a-flex-h-end > .c-bootstrap__back {
+  outline: none !important;
+}
+.c-bootstrap iframe#cssreveal_target {
+  position: relative ;
+  position: relative  !important;
+  height: 96vh;
+  width: 1212px;
+  min-width: 1212px;
+  border: none;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+  z-index: 50;
 }
 .c-cssrevealapp {
-  background-color: #eeeeee;
-  background-color: #eeeeee !important;
+  background-color: rgba(0, 0, 0, 0.6);
   width: 100%;
   height: 100%;
   width: 100% !important;
   height: 100% !important;
+  position: absolute ;
+  position: absolute  !important;
+  top: 0px ;
+  left: 0px ;
+  top: 0px  !important;
+  left: 0px  !important;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  display: flex !important;
+  flex-flow: row nowrap !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+  justify-content: center;
+  justify-content: center !important;
   display: none;
   display: none !important;
-  position: relative ;
-  position: relative  !important;
   z-index: 100;
 }
 body.s_app .c-cssrevealapp {
-  display: block;
-  display: block !important;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  display: flex !important;
+  flex-flow: row nowrap !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+}
+.c-cssrevealapp__back {
+  width: 8.33333vw;
+  width: 8.33333vw !important;
+}
+.c-cssrevealapp__content {
+  width: 83.3333vw;
+  width: 83.3333vw !important;
+  box-shadow: -3px 0 3px 0 rgba(0, 0, 0, 0.1), 3px 0 3px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: -3px 0 3px 0 rgba(0, 0, 0, 0.1), 3px 0 3px 0 rgba(0, 0, 0, 0.1) !important;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  display: flex !important;
+  flex-flow: row nowrap !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+  background-color: #ffffff;
+  background-color: #ffffff !important;
+  position: relative ;
+  position: relative  !important;
+}
+.c-cssrevealapp__nav {
+  width: 24.99999vw;
+  width: 24.99999vw !important;
+}
+.c-cssrevealapp__viewer {
+  flex: 1;
+  flex: 1 !important;
+  background-color: #eeeeee;
+  background-color: #eeeeee !important;
+  overflow: auto ;
+  overflow: auto  !important;
+}
+.c-cssrevealapp__close {
+  position: absolute ;
+  position: absolute  !important;
+  color: #eeeeee;
+  color: #eeeeee !important;
+  font-size: 13px;
+  font-size: 13px !important;
+  width: 8.33333vw;
+  width: 8.33333vw !important;
+  height: 66px;
+  height: 66px !important;
+  top: 0px ;
+  right: 0px ;
+  top: 0px  !important;
+  right: 0px  !important;
+  cursor: hand ;
+  cursor: hand  !important;
+  cursor: pointer ;
+  cursor: pointer  !important;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  display: flex !important;
+  flex-flow: row nowrap !important;
+  justify-content: center !important;
+  align-items: center !important;
+  background-color: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1) !important;
+}
+.c-cssrevealapp__close:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+.c-cssrevealhtml pre {
+  padding-top: 22px;
+  padding-bottom: 22px;
+  padding-top: 22px !important;
+  padding-bottom: 22px !important;
+  padding-left: 2.0833325vw;
+  padding-right: 2.0833325vw;
+  padding-left: 2.0833325vw !important;
+  padding-right: 2.0833325vw !important;
+  margin: 0 ;
+  margin: 0  !important;
+  border: none;
+  border: none !important;
+}
+.c-cssreveallist {
+  padding-left: 2.0833325vw;
+  padding-right: 2.0833325vw;
+  padding-left: 2.0833325vw !important;
+  padding-right: 2.0833325vw !important;
+  padding-top: 22px;
+  padding-bottom: 22px;
+  padding-top: 22px !important;
+  padding-bottom: 22px !important;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+.c-cssreveallist__item {
+  width: 100%;
+  width: 100% !important;
+  height: 44px;
+  height: 44px !important;
+  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid #eeeeee !important;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex !important;
+  flex-flow: row nowrap !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+  color: #808080;
+  color: #808080 !important;
+  cursor: hand ;
+  cursor: hand  !important;
+  cursor: pointer ;
+  cursor: pointer  !important;
+}
+.flexbox-grid .a-flex-v > .c-cssreveallist__item {
+  outline: none;
+}
+.flexbox-grid .a-flex-v-end > .c-cssreveallist__item {
+  outline: none;
+}
+.flexbox-grid .a-flex-v > .c-cssreveallist__item {
+  outline: none !important;
+}
+.flexbox-grid .a-flex-v-end > .c-cssreveallist__item {
+  outline: none !important;
+}
+.c-cssreveallist__item:hover {
+  background-color: #eeeeee;
+  background-color: #eeeeee !important;
+}
+.c-cssreveallist__item:hover {
+  background-color: #eeeeee;
+  background-color: #eeeeee !important;
+}
+.c-cssreveallist__item--selected {
+  color: #00dfa7;
+  color: #00dfa7 !important;
 }
 .a-flex-v {
   display: flex !important;

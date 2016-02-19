@@ -10,19 +10,52 @@
             function hitService() {
                 parent.postMessage({
                         action:'cssreveal',
-                        target:'.c-primaryNav',
+                        target:'.c-primaryNav2',
                         filters:[
-                            ['.c-primaryNav__item',2]
+                            ['.c-primaryNav__item',4]
                         ]
                     }, document.location.origin
                 );
             }
 
+			parent.postMessage({
+					action:'cssreveal',
+					target:'.c-primaryNav',
+					filters:[
+						['.c-primaryNav__item',2]
+					]
+				}, document.location.origin
+			);
+
         </script>
 
 	</head>
-	<body>
+	<body style="background-color: #fff;">
         <div class="c-primaryNav">
+            <div></div>
+            				<div class="c-primaryNav__item">1a</div>
+							<div class="c-primaryNav__item"><div class="c-primaryNav">
+					            <div></div>
+					            				<div class="c-primaryNav__itsem">1a</div>
+					            <div class="c-primaryNav__istem">2b</div>
+					            <div class="c-primaryNav__istem">3a</div>
+					            <div class="c-primaryNav__istem">4b</div>
+					            					<div class="c-primaryNav__itesm">5a</div>
+					            <div class="c-primaryNav__itsem">6b</div>
+					            <div class="c-primaryNav__itsem">7a</div>
+					            <div class="c-primaryNav__itsem">8asdf asdl;kfjas dklfj lask;dfj aksldj faksdljf aslkdjf al;ksdjf l;askdjf a;lsdkfas;ldkf jas;kdjf ;asdlkfj as;dlkfj as;dlkfj asd;lk fjasd ;lfkjasdfb</div>
+					        </div></div>
+            <div class="c-primaryNav__item">2b</div>
+            <div class="c-primaryNav__item">3a</div>
+            <div class="c-primaryNav__item">4b</div>
+            					<div class="c-primaryNav__item">5a</div>
+            <div class="c-primaryNav__item">6b</div>
+            <div class="c-primaryNav__item">7a</div>
+
+        </div>
+
+
+		<div class="c-primaryNav2">
             <div></div>
             <div class="c-primaryNav__item">1a</div>
             <div class="c-primaryNav__item">2b</div>

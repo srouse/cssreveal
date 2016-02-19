@@ -28,9 +28,12 @@ module.exports = function(grunt) {
             [
         		'node_modules/react/dist/react.js',
         		'node_modules/routestate/RouteState.js',
-                'node_modules/prettydiff/prettydiff.js',
                 'node_modules/jquery/dist/jquery.min.js',
-                'node_modules/prettydiff/api/dom.js',
+
+                'node_modules/js-beautify/js/lib/beautify.js',
+                'node_modules/js-beautify/js/lib/beautify-css.js',
+                'node_modules/js-beautify/js/lib/beautify-html.js',
+
                 'cssreveal.js',
                 'dist/_temp/**/*.js',
                 'app/**/*.js'
