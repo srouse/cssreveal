@@ -97,7 +97,7 @@ var CSSRevealApp = React.createClass({displayName: "CSSRevealApp",
 
         var filterNodes,filter;
         for ( var i=0; i<comp.filters.length; i++ ) {
-            filter = comp.filters[i]; 
+            filter = comp.filters[i];
             filterNodes = clone.querySelectorAll( filter[0] );
             Array.prototype.forEach.call( filterNodes , function(el, i) {
                 if ( i >= filter[1] )
@@ -147,7 +147,7 @@ var CSSRevealApp = React.createClass({displayName: "CSSRevealApp",
                 ), 
                 React.createElement("div", {className: "c-cssrevealapp__viewer c-cssrevealhtml"}, 
                     React.createElement("pre", {className: "prettyprint lang-html"}, 
-                         focused_csscomp.cleanHTML
+                         (( focused_csscomp ) ? focused_csscomp.cleanHTML : "") 
                     )
                 )
             ), 

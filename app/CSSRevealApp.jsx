@@ -66,7 +66,7 @@ var CSSRevealApp = React.createClass({
 
         var filterNodes,filter;
         for ( var i=0; i<comp.filters.length; i++ ) {
-            filter = comp.filters[i]; 
+            filter = comp.filters[i];
             filterNodes = clone.querySelectorAll( filter[0] );
             Array.prototype.forEach.call( filterNodes , function(el, i) {
                 if ( i >= filter[1] )
@@ -107,6 +107,11 @@ var CSSRevealApp = React.createClass({
             );
         }
 
+        var cleanHTML = false;
+        if ( focused_csscomp ) {
+            cleanHTML = focused_csscomp.cleanHTML;
+        }
+
         return <div className="c-cssrevealapp">
             <div className="c-cssrevealapp__back"
                 onClick={ function () { RS.merge({'app':false}) } }></div>
@@ -116,7 +121,7 @@ var CSSRevealApp = React.createClass({
                 </div>
                 <div className="c-cssrevealapp__viewer c-cssrevealhtml">
                     <pre className="prettyprint lang-html">
-                        { focused_csscomp.cleanHTML }
+                        { cleanHTML }
                     </pre>
                 </div>
             </div>
