@@ -23,14 +23,8 @@ var CSSRevealApp = React.createClass({
 
         window.addEventListener( "message" , function(event) {
             if ( event.data.action == "cssreveal" ) {
-                //me.add( event.data.target , event.data.filters );
-                //if ( !CSSRevealModel.csscomps_lookup[ event.data.target ] ) {
-                    //event.data.cleanHTML = me.cleanHTML( event.data );
-                    event.data.html = me.getHTML( event.data );
-                //}
-                console.log( event.data );
+                event.data.html = me.getHTML( event.data );
                 CSSRevealModel.csscomps_lookup[ event.data.target ] = event.data;
-
                 me.forceUpdate();
             }
         }, false);
