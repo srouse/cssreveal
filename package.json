@@ -2,7 +2,7 @@
 	"name": "cssreveal",
 	"description": "A utility to dynamically view the HTML structure behind OOCSS elements",
 	"author": "srouse",
-	"version": "0.0.7",
+	"version": "0.0.8",
 	"dependencies": {},
 	"devDependencies": {
 		"grunt":"~0.4",

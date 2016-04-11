@@ -139,6 +139,16 @@ body.s_app .c-cssrevealapp {
   overflow: auto ;
   overflow: auto  !important;
 }
+.c-cssrevealapp__title {
+  padding: 22px;
+  padding: 22px !important;
+  padding-bottom: 0;
+  padding-bottom: 0 !important;
+  color: #808080;
+  color: #808080 !important;
+  font-size: 22px;
+  font-size: 22px !important;
+}
 .c-cssrevealapp__close {
   position: absolute ;
   position: absolute  !important;
@@ -170,7 +180,7 @@ body.s_app .c-cssrevealapp {
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1) !important;
 }
-.c-cssrevealapp:hover {
+.c-cssrevealapp__close:hover {
   background-color: rgba(0, 0, 0, 0.9);
 }
 .c-cssrevealhtml pre {
@@ -246,6 +256,9 @@ body.s_app .c-cssrevealapp {
 .c-cssreveallist__item--selected {
   color: #00dfa7;
   color: #00dfa7 !important;
+}
+.c-cssreveallist__item--noShortcut {
+  color: #ED6A20 !important;
 }
 .a-flex-v {
   display: flex !important;

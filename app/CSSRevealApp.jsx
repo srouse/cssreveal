@@ -56,7 +56,11 @@ var CSSRevealApp = React.createClass({
 
         var div = iframe.contentWindow.document.querySelector( comp.target );
 
-        return div.outerHTML;
+        if ( div ){
+            return div.outerHTML;
+        }else{
+            return false;
+        }
     },
 
     cleanHTML: function ( comp ) {
@@ -112,9 +116,9 @@ var CSSRevealApp = React.createClass({
 
                 if ( innerText.length > 0 ) {
                     if ( innerText.length > 20 ) {
-                        innerText = " (" + innerText.substring( 0, 20 ) + "...)";
+                        innerText = "<i>" + innerText.substring( 0, 20 ) + "...</i>";
                     }else{
-                        innerText = " (" + innerText + ")";
+                        innerText = "<i>" + innerText + "</i>";
                     }
                 }
 
@@ -152,7 +156,7 @@ var CSSRevealApp = React.createClass({
                     html += "\n" + indent_str;
                 }
 
-                html += "<span style='color: #000; weight: bold;'>" + "&lt;\\" +  element.nodeName.toLowerCase() +"&gt;" + "</span>";
+                html += innerText + "<span style='color: #000; weight: bold;'>" + "&lt;\\" +  element.nodeName.toLowerCase() +"&gt;" + "</span>";
 
             }else if ( element.nodeType == 3 ) {// text node
                 //var text_content = element.textContent.replace(/(\r\n|\n|\r)/gm,"").trim();
@@ -246,33 +250,20 @@ var CSSRevealApp = React.createClass({
 
     render: function() {
 
-        console.log( this.props );
-
         var focused_csscomp = false;
         if ( RS.route.csscomp ) {
             focused_csscomp = CSSRevealModel.csscomps_lookup[ decodeURIComponent( RS.route.csscomp ) ];
         }
 
-        var comp_list = [],csscomp,xcls;
-        //for ( var i=CSSRevealModel.csscomps.length-1; i>=0; i-- ) {
-        for ( var cssComp_name in CSSRevealModel.csscomps_lookup ) {
-            csscomp = CSSRevealModel.csscomps_lookup[ cssComp_name ];//CSSRevealModel.csscomps[i];
-            xcls = ( focused_csscomp === csscomp ) ? "c-cssreveallist__item--selected" : "";
+        var comp_list = [];
 
-            comp_list.push(
-                <div className={ "c-cssreveallist__item " + xcls }
-                    key={ csscomp.target }
-                    onClick={ this.openCSSComp.bind( this , csscomp ) }>
-                    { csscomp.target }
-                </div>
-            );
-        }
-
+        //Create Shortcuts Lookup
+        var shortcut_lookup = {};
         if ( this.props.shortcuts ) {
             var shortcut;
             for ( var i=0; i<this.props.shortcuts.length; i++ ) {
                 shortcut = this.props.shortcuts[i];
-
+                shortcut_lookup[shortcut.title] = true;
                 // avoid dups....
                 if ( !CSSRevealModel.csscomps_lookup[shortcut.title] ) {
                     comp_list.push(
@@ -287,10 +278,34 @@ var CSSRevealApp = React.createClass({
         }
 
 
+
+        var csscomp,xcls;
+        //for ( var i=CSSRevealModel.csscomps.length-1; i>=0; i-- ) {
+        for ( var cssComp_name in CSSRevealModel.csscomps_lookup ) {
+            csscomp = CSSRevealModel.csscomps_lookup[ cssComp_name ];//CSSRevealModel.csscomps[i];
+            xcls = ( focused_csscomp === csscomp ) ? "c-cssreveallist__item--selected" : "";
+            comp_list.push(
+                <div className={
+                        "c-cssreveallist__item " + xcls +
+                        ( ( shortcut_lookup[csscomp.target] === true ) ? "" : " c-cssreveallist__item--noShortcut" )
+                    }
+                    key={ csscomp.target }
+                    onClick={ this.openCSSComp.bind( this , csscomp ) }>
+                    { csscomp.target }
+                </div>
+            );
+        }
+
+
+
+
         var cleanHTML = false;
+        var focused_csscomp_title = "";
         if ( focused_csscomp ) {
             cleanHTML = this.cleanHTML( focused_csscomp );
+            focused_csscomp_title = focused_csscomp.target;
         }
+
 
         return <div className="c-cssrevealapp">
             <div className="c-cssrevealapp__back"
@@ -300,11 +315,9 @@ var CSSRevealApp = React.createClass({
                     { comp_list }
                 </div>
                 <div className="c-cssrevealapp__viewer c-cssrevealhtml">
+                    <div className="c-cssrevealapp__title">{ focused_csscomp_title }</div>
                     <pre className="prettyprint-OFF lang-html-OFF"
                         dangerouslySetInnerHTML={{__html:cleanHTML}}>
-                        {
-                            //cleanHTML
-                        }
                     </pre>
                 </div>
             </div>
