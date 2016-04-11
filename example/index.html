@@ -5,7 +5,7 @@
 
 		<script src='../dist/cssreveal.js?ss'></script>
         <link href='../dist/cssreveal.css' type='text/css' rel='stylesheet'>
-		
+
 		<script>
 
             function ready(fn) {
@@ -17,7 +17,15 @@
             }
 
             ready( function(event) {
-                CSSReveal.render( "body" , 'prototype.html' );
+
+				var links = [
+					{title:".c-primaryNav2",
+					url:"#!/show/.c-primaryNav2/{app,csscomp}[,0]"},
+					{title:".c-primaryNav",
+					url:"#!/show/.c-primaryNav/{app,csscomp}[,0]"}
+				];
+
+                CSSReveal.render( "body" , 'prototype.html', links );
             });
 
 		</script>

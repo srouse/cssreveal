@@ -23,7 +23,7 @@ var Bootstrap = React.createClass({
             <div className="c-bootstrap__back" onClick={ this.openApp }></div>
             <iframe id="cssreveal_target" src={ this.props.url + '?' + Math.random() }></iframe>
             <div className="c-bootstrap__back" onClick={ this.openApp }></div>
-            <CSSRevealApp />
+            <CSSRevealApp shortcuts={ this.props.shortcuts } />
         </div>;
     }
 

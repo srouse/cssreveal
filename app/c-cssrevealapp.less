@@ -21,14 +21,14 @@ body, html {
     .a-fill-container;
     .a-background-grey-5;
     .a-flex-h;
-
-    &__back {
+}
+    .c-bootstrap__back {
         .a-height-100;
         width: calc( 100% ~'-' 1212px );
         .a-interactive;
     }
 
-    iframe#cssreveal_target {
+    .c-bootstrap iframe#cssreveal_target {
         .a-position-relative;
         height: 96vh;
         // left: 50%; margin-left: -605px;
@@ -37,7 +37,7 @@ body, html {
         box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
         z-index: 50;
     }
-}
+
 
 .c-cssrevealapp {
     background-color: rgba( 0,0,0,.6);
@@ -50,48 +50,53 @@ body, html {
     .a-justify-content-center;
     .a-display-none;
     z-index: 100;
+}
 
-    body.s_app & {
+    body.s_app .c-cssrevealapp{
         .a-flex-h-stretch;
     }
 
-    &__back {
+    .c-cssrevealapp__back {
         .a-width-col-1;
     }
 
-    &__content {
+    .c-cssrevealapp__content {
         .a-width-col-10;
         .a-shadow-left-right;
         .a-flex-h-stretch;
         .a-background-white;
         .a-position-relative;
+
+        pre {
+            -moz-tab-size: 5;
+            tab-size: 5;
+        }
     }
 
-    &__nav {
+
+    .c-cssrevealapp__nav {
         .a-width-col-3;
     }
 
-    &__viewer {
+    .c-cssrevealapp__viewer {
         .a-flex-item-fill;
         .a-background-grey-9;
         .a-overflow-auto;
     }
 
-    &__close {
+    .c-cssrevealapp__close {
         .a-position-absolute;
         .a-text-color-grey-9;
-        .a-text-size-small;
+        .a-text-size;
         .a-width-col-1;
         .a-height-row-3;
         .a-top-right;
         .a-interactive;
         .a-flex-center;
-        background-color: rgba( 0,0,0,.4);
+        background-color: rgba( 0,0,0,.7);
         //border-bottom: 1px solid #666;
         .a-shadow-bottom;
-
-        &:hover {
+    }
+        .c-cssrevealapp:hover {
             background-color: rgba( 0,0,0,.9);
         }
-    }
-}
